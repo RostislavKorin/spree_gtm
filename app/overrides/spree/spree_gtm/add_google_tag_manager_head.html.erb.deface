@@ -1,0 +1,2 @@
+<!-- insert_after "[data-hook='inside_head']" -->
+<%= render :partial => 'spree/google_tag_manager_head'%>
