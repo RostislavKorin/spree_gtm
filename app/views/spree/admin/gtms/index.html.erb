@@ -1,0 +1,14 @@
+<h1><%= t('spree.gtm') %></h1>
+<div class="col-md-6">
+  <br />
+  <br />
+  <% if @gtm.new_record? %>
+    <%= form_for [:admin, @gtm] do |f| %>
+      <%= render :partial => "form", :locals => { :f => f } %>
+    <% end %>
+  <% else %>
+    <%= form_for [:admin, @gtm], :method => :put do |f| %>
+      <%= render :partial => "form", :locals => { :f => f } %>
+    <% end %>
+  <% end %>
+</div>
