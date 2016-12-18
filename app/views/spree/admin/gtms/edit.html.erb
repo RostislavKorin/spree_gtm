@@ -1,0 +1,13 @@
+<% if @gtm.errors.any? %>
+   <h2>Errors:</h2>
+   <ul>
+     <% @gtm.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+   </ul>
+<% end %>
+
+
+<%= form_for [:admin, @gtm] do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+<% end %>
