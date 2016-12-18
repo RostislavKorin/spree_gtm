@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_gtm'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.summary     = 'some summary here'
   s.description = 'some gem description here'
   s.required_ruby_version = '>= 2.1.0'
@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   # s.homepage  = 'http://www.spreecommerce.com'
   s.license = 'BSD-3'
 
-  # s.files       = `git ls-files`.split("\n")
-  # s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.files       = `git ls-files`.split($/)
+  s.test_files  = s.files.grep(%r{^(test|spec|features)/})
   s.require_path = 'lib'
   s.requirements << 'none'
 
