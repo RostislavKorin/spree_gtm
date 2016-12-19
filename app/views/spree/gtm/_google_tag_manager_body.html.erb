@@ -1,4 +1,26 @@
 <% if Spree::Gtm.activated? %>
+  <% if controller.controller_name == "orders" && controller.action_name == "show" %>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+      'transactionId': '<%= @order.number %>',
+      'transactionTotal': <%= @order.total %>,
+      'transactionTax': <%= @order.adjustments.tax.sum(:amount) %>,
+      'transactionShipping': <%= @order.adjustments.shipping.sum(:amount) %>,
+      'transactionCity': '<%= @order.bill_address.city %>',
+      'transactionState': '<%= @order.bill_address.state_text %>',
+      'transactionZip': '<%= @order.bill_address.zipcode %>',
+      'transactionEmail': '<%= @order.email %>',
+      'transactionProducts': [
+        <%=raw @order.line_items.map { |line_item| "{ 'sku': '#{h line_item.variant.sku}',
+                                                      'name': '#{h line_item.variant.product.name}',
+                                                      'category': '',
+                                                      'price': #{h line_item.price},
+                                                      'quantity': #{h line_item.quantity}}" } .join(",") %>
+      ]
+    });
+  </script>
+  <% end %>
   <!-- Google Tag Manager (noscript) -->
   <noscript>
     <iframe src="//www.googletagmanager.com/ns.html?id=<%=  Spree::Gtm.gtm_accountid  %>"
