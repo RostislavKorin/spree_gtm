@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_gtm'
-  s.version     = '0.0.6'
+  s.version     = '0.0.11'
   s.summary     = 'some summary here'
   s.description = 'some gem description here'
   s.required_ruby_version = '>= 2.1.0'
