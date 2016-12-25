@@ -34,6 +34,9 @@ require 'spree/testing_support/url_helpers'
 require 'spree_gtm/factories'
 
 RSpec.configure do |config|
+
+  config.include AuthenticationHelpers, :type => :request
+  config.include Capybara::DSL
   config.include FactoryGirl::Syntax::Methods
 
   # Infer an example group's spec type from the file location.

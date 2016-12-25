@@ -8,4 +8,5 @@ gemspec
 
 group :test do
   gem 'rspec'
+  gem 'launchy'
 end
