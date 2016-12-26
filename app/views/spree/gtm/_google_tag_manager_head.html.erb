@@ -18,7 +18,7 @@
   <% if @order.present? and @order.user.present? %>
     dataLayer.push({'userid': '<%= @order.user.id %>'});
   <% end %>
-    <% if @order.present? %>
+    <% if @order.present? && @order.bill_address.present?  %>
 
       dataLayer.push({
         'transactionId': '<%= @order.number %>',
