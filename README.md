@@ -1,5 +1,5 @@
- Spree Google Tag Maneger Plugin
- ============
+SPREE GOOGLE TAG MANAGER PLUGIN
+============
 
 [![Gem Version](https://badge.fury.io/rb/spree_gtm.svg)](https://badge.fury.io/rb/spree_gtm)
  [![Code Climate](https://codeclimate.com/github/RostislavKorin/spree_gtm/badges/gpa.svg)](https://codeclimate.com/github/RostislavKorin/spree_gtm)
