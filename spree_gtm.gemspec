@@ -2,11 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_gtm'
-<<<<<<< HEAD
   s.version     = '0.0.14'
-=======
-  s.version     = '0.0.11'
->>>>>>> rspec-spec
   s.summary     = 'some summary here'
   s.description = 'some gem description here'
   s.required_ruby_version = '>= 2.1.0'

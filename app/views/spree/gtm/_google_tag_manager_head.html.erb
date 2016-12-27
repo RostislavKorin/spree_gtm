@@ -18,7 +18,7 @@
   <% if @order.present? and @order.user.present? %>
     dataLayer.push({'userid': '<%= @order.user.id %>'});
   <% end %>
-<<<<<<< HEAD
+
     <% if @order.present? && @order.bill_address.present?  %>
 
       dataLayer.push({
@@ -31,19 +31,6 @@
         'transactionState': '<%= @order.bill_address.state_text %>',
         'transactionZip': '<%= @order.bill_address.zipcode %>',
         'transactionEmail': '<%= @order.email %>',
-=======
-    <% if @order.present? && @order.bill_address.present? %>
-
-      dataLayer.push({
-      'transactionId': '<%= @order.number %>',
-      'transactionTotal': <%= @order.total %>,
-      'transactionTax': <%= @order.adjustments.tax.sum(:amount) %>,
-      'transactionShipping': <%= @order.adjustments.shipping.sum(:amount) %>,
-      'transactionCity': '<%= @order.bill_address.city %>',
-      'transactionState': '<%= @order.bill_address.state_text %>',
-      'transactionZip': '<%= @order.bill_address.zipcode %>',
-      'transactionEmail': '<%= @order.email %>',
->>>>>>> rspec-spec
         'transactionProducts': [
           <%=raw @order.line_items.map { |line_item| "{ 'sku': '#{h line_item.variant.sku}',
                                                         'name': '#{h line_item.variant.product.name}',
