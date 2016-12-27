@@ -22,7 +22,7 @@ require 'ffaker'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
-
+Capybara.ignore_hidden_elements = false
 # Requires factories and other useful helpers defined in spree_core.
 require 'spree/testing_support/authorization_helpers'
 require 'spree/testing_support/capybara_ext'
@@ -34,6 +34,9 @@ require 'spree/testing_support/url_helpers'
 require 'spree_gtm/factories'
 
 RSpec.configure do |config|
+
+  config.include AuthenticationHelpers, :type => :request
+  config.include Capybara::DSL
   config.include FactoryGirl::Syntax::Methods
 
   # Infer an example group's spec type from the file location.
