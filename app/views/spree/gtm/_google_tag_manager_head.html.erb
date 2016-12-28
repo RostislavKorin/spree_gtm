@@ -15,6 +15,32 @@
   <% if @order.present? and @order.email.present? %>
     dataLayer.push({'transactionEmail': '<%= @order.email %>'});
   <% end %>
+
+   <% if @product %>
+      dataLayer.push({'product': [
+        'name': '<%= @product.name %>',
+        'sku': '<%= @product.sku %>',
+        'quantity': '<%= @product.quantity %>',
+        'category': '<%= @product.category %>'
+        ]
+      });
+   <% end %>
+
+   <% if @cart %>
+      dataLayer.push({'cart': [
+          <%=raw @order.line_items.map { |line_item| "{ 'sku': '#{h line_item.variant.sku}',
+                                                        'name': '#{h line_item.variant.product.name}',
+                                                        'category': '',
+                                                        'price': #{h line_item.price},
+                                                        'quantity': #{h line_item.quantity}}" } .join(",") %>
+        ]
+      });
+   <% end %>
+
+   <% if @category %>
+     dataLayer.push({'category': ['name': '<%= @category.name %>']});
+   <% end %>
+
   <% if @order.present? and @order.user.present? %>
     dataLayer.push({'userid': '<%= @order.user.id %>'});
   <% end %>
