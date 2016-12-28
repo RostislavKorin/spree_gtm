@@ -20,15 +20,14 @@
       dataLayer.push({'product': [
         'name': '<%= @product.name %>',
         'sku': '<%= @product.sku %>',
-        'quantity': '<%= @product.quantity %>',
-        'category': '<%= @product.category %>'
+        'price': '<%= @product.price %>'
         ]
       });
    <% end %>
 
    <% if @cart %>
       dataLayer.push({'cart': [
-          <%=raw @order.line_items.map { |line_item| "{ 'sku': '#{h line_item.variant.sku}',
+          <%=raw @cart.line_items.map { |line_item| "{ 'sku': '#{h line_item.variant.sku}',
                                                         'name': '#{h line_item.variant.product.name}',
                                                         'category': '',
                                                         'price': #{h line_item.price},
