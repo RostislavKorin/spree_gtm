@@ -1,20 +1,45 @@
 require 'spec_helper'
 
-describe "GTM value set in controller" do
-  context "value set in controller " do
-    it "should render tag" do
-      user = create(:admin_user, :email => "test@example.com", :password => "spree123")
-      sign_in_as!(user)
-      visit spree.admin_path
-      click_link "Configurations"
-      click_link "Google Tag Manager"
-      fill_in('Gtm accountid', :with => 'bag')
-      click_button "Save"
-      page.should have_content("Gtm has been successfully")
-      visit ('/')
-      page.all('body script', visible: false).each do |script|
-        script.text == "dataLayer, bag"
+describe "Tag implementation on the pages" do
+
+    context "gtm id implement in tag " do
+      it "should render tag with gtm id" do
+        fill_in_gtm_id
+        visit ('/')
+        page.all('body script', visible: false).each do |script|
+          script.text == "dataLayer, bag"
+        end
       end
     end
-  end
+
+    
+    context "tag present on cart page " do
+      it "should render tag" do
+        fill_in_gtm_id
+        visit ('/cart')
+        page.all('body script', visible: false).each do |script|
+          script.text == "dataLayer, cart"
+        end
+      end
+    end
+
+    context "tag present on product page " do
+      it "should render tag on product page" do
+        fill_in_gtm_id
+        visit ('/products')
+        page.all('body script', visible: false).each do |script|
+          script.text == "dataLayer, product"
+        end
+      end
+    end
+
+    context "tag present on order page " do
+      it "should render tag on order page" do
+        fill_in_gtm_id
+        visit ('/order')
+        page.all('body script', visible: false).each do |script|
+          script.text == "dataLayer, order"
+        end
+      end
+    end
 end

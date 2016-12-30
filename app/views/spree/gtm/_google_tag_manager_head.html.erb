@@ -36,14 +36,6 @@
       });
    <% end %>
 
-   <% if @category %>
-     dataLayer.push({'category': ['name': '<%= @category.name %>']});
-   <% end %>
-
-   <% if @search %>
-     dataLayer.push({'search': ['name': '<%= @category.name %>']});
-   <% end %>
-
   <% if @order.present? and @order.user.present? %>
     dataLayer.push({'userid': '<%= @order.user.id %>'});
   <% end %>
