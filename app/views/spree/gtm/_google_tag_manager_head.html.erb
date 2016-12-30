@@ -17,13 +17,12 @@
   <% end %>
 
   <% if current_page?('/cart') %>
-    dataLayer.push({'cart': [
+    dataLayer.push({
       <%=raw @order.line_items.map { |line_item| "{ 'sku': '#{h line_item.variant.sku}',
                                                     'name': '#{h line_item.variant.product.name}',
                                                     'category': '',
                                                     'price': #{h line_item.price},
                                                     'quantity': #{h line_item.quantity}}" } .join(",") %>
-        ]
       });
   <% end %>
 
@@ -40,7 +39,7 @@
     dataLayer.push({'userid': '<%= @order.user.id %>'});
   <% end %>
 
-    <% if current_page?('/orders')  %>
+    <% if @order.present? && @order.bill_address.present?  %>
 
       dataLayer.push({
         'transactionId': '<%= @order.number %>',
