@@ -12,7 +12,7 @@ describe "Tag implementation on the pages" do
       end
     end
 
-    
+
     context "tag present on cart page " do
       it "should render tag" do
         fill_in_gtm_id
@@ -33,13 +33,13 @@ describe "Tag implementation on the pages" do
       end
     end
 
-    context "tag present on order page " do
-      it "should render tag on order page" do
-        fill_in_gtm_id
-        visit ('/order')
-        page.all('body script', visible: false).each do |script|
-          script.text == "dataLayer, order"
-        end
-      end
-    end
+    # context "tag present on order page " do
+    #   it "should render tag on order page" do
+    #     fill_in_gtm_id
+    #     visit ('/orders')
+    #     page.all('body script', visible: false).each do |script|
+    #       script.text == "dataLayer, order"
+    #     end
+    #   end
+    # end
 end

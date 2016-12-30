@@ -27,8 +27,8 @@
       });
   <% end %>
 
-   <% if current_page?('/products') %>
-      dataLayer.push({'products': [
+   <% if @product %>
+      dataLayer.push({'product': [
         'name': '<%= @product.name %>',
         'sku': '<%= @product.sku %>',
         'price': '<%= @product.price %>'
@@ -40,7 +40,7 @@
     dataLayer.push({'userid': '<%= @order.user.id %>'});
   <% end %>
 
-    <% if current_page?('/order')  %>
+    <% if current_page?('/orders')  %>
 
       dataLayer.push({
         'transactionId': '<%= @order.number %>',
